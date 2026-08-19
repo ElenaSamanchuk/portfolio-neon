@@ -1,4 +1,4 @@
-export const BUILDER_GAP = 10;
+export const BUILDER_GAP = 7;
 
 export const BUILDER_TUNING = {
   pauseBetweenBlocks: 200,
@@ -20,13 +20,13 @@ export type BuilderBlockConfig = {
   styled: BuilderBlockSize;
 };
 
-/** 2× scale vs original portfolio wireframe */
+/** ~1.35× vs original portfolio wireframe (between 1× and 2×) */
 export const BUILDER_BLOCKS: BuilderBlockConfig[] = [
-  { id: "nav", wire: { height: 36, width: 100 }, styled: { height: 36, width: 100 } },
-  { id: "hero", wire: { height: 168, width: 100 }, styled: { height: 176, width: 100 } },
-  { id: "columns", wire: { height: 128, width: 100 }, styled: { height: 132, width: 100 } },
-  { id: "cards", wire: { height: 144, width: 100 }, styled: { height: 148, width: 100 } },
-  { id: "cta", wire: { height: 60, width: 38 }, styled: { height: 64, width: 42 } },
+  { id: "nav", wire: { height: 24, width: 100 }, styled: { height: 24, width: 100 } },
+  { id: "hero", wire: { height: 112, width: 100 }, styled: { height: 116, width: 100 } },
+  { id: "columns", wire: { height: 88, width: 100 }, styled: { height: 90, width: 100 } },
+  { id: "cards", wire: { height: 100, width: 100 }, styled: { height: 102, width: 100 } },
+  { id: "cta", wire: { height: 42, width: 38 }, styled: { height: 44, width: 42 } },
 ];
 
 export const BUILDER_STAGE_MIN_HEIGHT =

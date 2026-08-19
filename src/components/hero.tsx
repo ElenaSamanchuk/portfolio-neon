@@ -94,7 +94,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative w-full lg:min-w-[800px] lg:max-w-[800px]">
+          <div className="relative w-full lg:min-w-[520px] lg:max-w-[520px]">
             <p className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.35em] text-muted-foreground lg:text-left">
               Сборка структуры страницы
             </p>

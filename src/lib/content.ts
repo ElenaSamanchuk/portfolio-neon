@@ -85,6 +85,8 @@ export type PortfolioItem = {
   proof: string;
   role: string;
   previewImage: string;
+  visualAccent: string;
+  visualTag?: string;
   badges?: string[];
   niches: string[];
   tech: string[];
@@ -100,6 +102,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Event-лендинг под ключ: Figma 1440+360, UI-kit, Play-прототип и интерактивный код на GitHub Pages.",
     role: "UX/UI, прототип, адаптив 360–1440, HTML/CSS/JS (Vite), QA, handoff.",
     previewImage: "/previews/yandex-pet-day.png",
+    visualAccent: "#ffcc00",
+    visualTag: "PET DAY",
     badges: ["под ключ", "Figma Play"],
     niches: ["Event", "B2B"],
     tech: ["Figma", "HTML/CSS/JS", "Vite", "адаптив", "прототип"],
@@ -116,6 +120,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Full-stack MVP: docs → chatbot → embed widget, Stripe, Android APK.",
     role: "Продукт, UI, Supabase, Edge Functions, деплой на GitHub Pages + Vercel.",
     previewImage: "/previews/knowembed-mobile.png",
+    visualAccent: "#6e3cff",
+    visualTag: "AI",
     badges: ["full-stack MVP", "B2B SaaS"],
     niches: ["AI", "SaaS"],
     tech: ["Supabase", "Stripe", "Android APK", "embed"],
@@ -132,6 +138,8 @@ export const portfolioItems: PortfolioItem[] = [
       "CRO-редизайн smlogik.ru: premium-бренд сохранён, конверсия в заявку «видеообзор» усилена точечными патчами.",
     role: "Аудит, слой поверх Tilda, inline-каталог, FAQ, AI-консультант, shop UX.",
     previewImage: "/previews/smartlogic.png",
+    visualAccent: "#d4af6a",
+    visualTag: "CRO",
     badges: ["CRO", "под ключ"],
     niches: ["HoReCa", "E-commerce"],
     tech: ["Tilda", "CRO", "KnowEmbed", "HTML/CSS/JS"],
@@ -148,6 +156,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Серия промо: вовлечение и следующий шаг в воронке — не декоративные виджеты.",
     role: "Механики на HTML/CSS/JS + посадочные на Tilda.",
     previewImage: "/previews/growfood.png",
+    visualAccent: "#b8ff3c",
+    visualTag: "GROW",
     niches: ["FoodTech", "B2C"],
     tech: ["Tilda", "HTML/CSS/JS", "баннеры", "калькулятор"],
     links: [
@@ -163,6 +173,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Сезонные кампании и партнёрские лендинги: срочность, сегментация и путь клиента.",
     role: "Таймер, сезонный квиз и игровые карточки — код HTML/CSS/JS.",
     previewImage: "/previews/priem.png",
+    visualAccent: "#ff3c6e",
+    visualTag: "ПРИЁМ",
     niches: ["FoodTech", "B2C"],
     tech: ["Tilda", "Zero Block", "таймер", "партнёрки"],
     links: [
@@ -177,6 +189,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "PWA, офлайн, vibe coding — от life-style трекера до игровых механик.",
     role: "Cursor, адаптив, деплой на GitHub Pages, Android APK.",
     previewImage: "/previews/vital-coach.png",
+    visualAccent: "#3cc8ff",
+    visualTag: "PWA",
     badges: ["PWA", "APK", "vibe coding"],
     niches: ["Life style", "игры"],
     tech: ["Cursor", "PWA", "APK", "офлайн"],
@@ -194,6 +208,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Связанный контур продуктовых панелей: CRM для рестов и агентств, конструктор ботов, таск-трекер и виджеты с админкой.",
     role: "React/Vite, RBAC, формы, деплой, Telegram/API, QA и автотесты.",
     previewImage: "/previews/nn99.png",
+    visualAccent: "#b8ff3c",
+    visualTag: "ADMIN",
     badges: ["CRM", "admin", "боты"],
     niches: ["B2B", "SaaS", "HoReCa"],
     tech: ["React", "CMS", "боты", "RBAC", "PostgreSQL"],
@@ -211,6 +227,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Витрины коучей: доверие и заявка важнее «красивой картинки».",
     role: "Лендинги и taplink на Tilda — итоги года, модули, страницы под продукты.",
     previewImage: "/previews/fitness.png",
+    visualAccent: "#ff6b4a",
+    visualTag: "FIT",
     badges: ["дизайн адаптива"],
     niches: ["B2C", "личный бренд"],
     tech: ["Tilda", "Zero Block", "адаптив"],
@@ -227,6 +245,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Запуск e-commerce-витрины: каталог, контент и доводка интерфейса.",
     role: "Tilda, наполнение каталога, доработки на HTML/CSS/JS.",
     previewImage: "/previews/nasha.png",
+    visualAccent: "#ff9f43",
+    visualTag: "NASHA",
     niches: ["E-commerce", "B2C"],
     tech: ["Tilda", "каталог", "адаптив"],
     links: [{ label: "Каталог", href: "https://nashashop.ru/catalog" }],
@@ -238,6 +258,8 @@ export const portfolioItems: PortfolioItem[] = [
     proof: "Школы и платформы: длинные лендинги, много контента, спокойный тон.",
     role: "Tilda, адаптив, QA и автотесты; курсы и HR-витрины.",
     previewImage: "/previews/education.png",
+    visualAccent: "#a78bfa",
+    visualTag: "ED",
     niches: ["EdTech", "B2B", "эксперт"],
     tech: ["Tilda", "адаптив", "QA", "автотесты"],
     links: [

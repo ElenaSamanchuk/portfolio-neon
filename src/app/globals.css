@@ -325,3 +325,36 @@
 .page-builder .pb-cta.is-styled > div {
   background: linear-gradient(90deg, var(--neon), rgba(184, 255, 60, 0.55));
 }
+
+.case-visual-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at 50% 35%, black 20%, transparent 72%);
+}
+
+.case-visual-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.04) 2px,
+    rgba(255, 255, 255, 0.04) 4px
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .case-visual-orbit {
+    animation: case-orbit-spin 24s linear infinite;
+  }
+}
+
+@keyframes case-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

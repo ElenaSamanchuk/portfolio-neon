@@ -104,7 +104,7 @@ export function PageBuilder() {
   return (
     <div
       ref={rootRef}
-      className="page-builder mx-auto w-full max-w-[800px] transform-gpu"
+      className="page-builder mx-auto w-full max-w-[520px] transform-gpu"
       data-polish={polished ? "true" : "false"}
       aria-hidden="true"
     >
@@ -117,7 +117,7 @@ export function PageBuilder() {
         }}
       >
         <motion.span
-          className="page-builder__ghost pointer-events-none absolute top-0 left-0 z-[6] h-4 w-4 rounded-sm bg-neon shadow-[0_0_18px_rgba(184,255,60,0.55)]"
+          className="page-builder__ghost pointer-events-none absolute top-0 left-0 z-[6] h-3 w-3 rounded-sm bg-neon shadow-[0_0_14px_rgba(184,255,60,0.5)]"
           style={{ x: ghostX, y: ghostY, opacity: ghostVisible ? 0.85 : 0 }}
         />
 

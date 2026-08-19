@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioItems } from "@/lib/content";
-import { assetPath } from "@/lib/utils";
+import { CaseVisual } from "@/components/case-visual";
 
 export function PortfolioSection() {
   const [active, setActive] = useState(0);
@@ -58,18 +57,13 @@ export function PortfolioSection() {
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0"
               >
-                <Image
-                  src={assetPath(item.previewImage)}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 65vw"
-                  priority={active === 0}
-                />
-
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/72 to-transparent"
-                  aria-hidden
+                <CaseVisual
+                  id={item.id}
+                  title={item.title}
+                  previewImage={item.previewImage}
+                  accent={item.visualAccent}
+                  visualTag={item.visualTag}
+                  niches={item.niches}
                 />
 
                 <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-20 sm:px-5 sm:pb-5 sm:pt-24">
