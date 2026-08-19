@@ -8,6 +8,8 @@ const DEMO_DOMAINS: Record<string, string> = {
   priem: "priem.menu",
   "web-apps": "pwa.github.io",
   "admin-platforms": "admin.suite",
+  "zero-awakening": "zero.awakening",
+  "digital-landing-lab": "landing.lab",
   fitness: "coach.fit",
   nasha: "nashashop.ru",
   education: "ed.school",
@@ -449,6 +451,101 @@ function NashaDemo({ accent }: DemoProps) {
   );
 }
 
+function ZeroAwakeningDemo({ accent }: DemoProps) {
+  return (
+    <div
+      className="relative aspect-[5/3] overflow-hidden bg-[#030306] p-4"
+      style={{
+        backgroundImage: `radial-gradient(circle at 50% 40%, ${accent}22, transparent 55%)`,
+      }}
+    >
+      <div className="flex items-center justify-between">
+        <span
+          className="font-mono text-[8px] uppercase tracking-[0.35em]"
+          style={{ color: accent }}
+        >
+          zero //
+        </span>
+        <span
+          className="font-mono text-[9px] tabular-nums"
+          style={{ color: accent }}
+        >
+          00:07:42
+        </span>
+      </div>
+      <div className="mt-4 flex flex-col items-center justify-center">
+        <p
+          className="font-display text-[clamp(1.5rem,6vw,2.5rem)] font-black uppercase tracking-[0.2em]"
+          style={{
+            color: accent,
+            textShadow: `0 0 32px ${accent}55`,
+          }}
+        >
+          ZERO
+        </p>
+        <div className="mt-3 h-1 w-24 rounded-full" style={{ background: accent }} />
+        <p className="mt-2 font-mono text-[8px] uppercase tracking-[0.3em] text-white/35">
+          пробуждение
+        </p>
+      </div>
+      <div className="absolute inset-x-4 bottom-4 flex gap-1">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <div
+            key={i}
+            className="h-1 flex-1 rounded-full"
+            style={{
+              background: i % 2 === 0 ? `${accent}35` : "rgba(255,255,255,0.06)",
+            }}
+          />
+        ))}
+      </div>
+      <div
+        className="case-visual-scanlines pointer-events-none absolute inset-0 opacity-[0.08]"
+        aria-hidden
+      />
+    </div>
+  );
+}
+
+function DigitalLandingLabDemo({ accent }: DemoProps) {
+  return (
+    <div className="relative aspect-[5/3] flex items-center justify-center gap-3 bg-[#08080c] p-4">
+      <div className="flex h-[88%] w-[58%] flex-col rounded-lg border border-white/12 bg-white/[0.03] p-2">
+        <div className="mb-2 flex gap-1">
+          <div className="h-1.5 w-10 rounded-full bg-white/15" />
+          <div className="h-1.5 flex-1 rounded-full bg-white/8" />
+        </div>
+        <div
+          className="flex-1 rounded-md p-2"
+          style={{ background: `linear-gradient(160deg, ${accent}28, transparent)` }}
+        >
+          <div className="h-3 w-[70%] rounded-full" style={{ background: `${accent}45` }} />
+          <div className="mt-2 h-2 w-full rounded-full bg-white/10" />
+          <div className="mt-1.5 h-2 w-[80%] rounded-full bg-white/7" />
+          <div className="mt-3 grid grid-cols-3 gap-1">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="h-8 rounded bg-white/6" />
+            ))}
+          </div>
+        </div>
+        <span className="mt-1 text-center font-mono text-[7px] text-white/30">1440</span>
+      </div>
+      <div className="flex h-[72%] w-[28%] flex-col rounded-xl border-2 border-white/15 bg-[#0a0a0f] p-1.5">
+        <div className="mx-auto mb-1 h-0.5 w-6 rounded-full bg-white/20" />
+        <div
+          className="flex-1 rounded-lg p-1.5"
+          style={{ background: `linear-gradient(180deg, ${accent}22, transparent)` }}
+        >
+          <div className="h-2 w-[75%] rounded-full" style={{ background: `${accent}40` }} />
+          <div className="mt-2 h-12 rounded-md bg-white/6" />
+          <div className="mt-1.5 h-5 rounded-full" style={{ background: accent }} />
+        </div>
+        <span className="mt-1 text-center font-mono text-[7px] text-white/30">360</span>
+      </div>
+    </div>
+  );
+}
+
 function EducationDemo({ accent }: DemoProps) {
   const sections = ["курс", "отзывы", "тариф", "faq"];
   return (
@@ -488,6 +585,8 @@ const DEMO_IDS = [
   "priem",
   "web-apps",
   "admin-platforms",
+  "zero-awakening",
+  "digital-landing-lab",
   "fitness",
   "nasha",
   "education",
@@ -525,6 +624,10 @@ export function CaseDemo({ id, accent }: { id: string; accent: string }) {
       return <WebAppsDemo accent={accent} />;
     case "admin-platforms":
       return <AdminPlatformsDemo accent={accent} />;
+    case "zero-awakening":
+      return <ZeroAwakeningDemo accent={accent} />;
+    case "digital-landing-lab":
+      return <DigitalLandingLabDemo accent={accent} />;
     case "fitness":
       return <FitnessDemo accent={accent} />;
     case "nasha":

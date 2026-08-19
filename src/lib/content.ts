@@ -2,11 +2,11 @@ export const site = {
   shortName: "Елена",
   name: "Елена Саманчук",
   tagline: "разработка сайтов полного цикла",
-  headline: "Страницы для кампаний, которые можно запускать завтра.",
+  headline: "Продукт, лендинги и механики — от Figma до prod URL.",
   subhead:
-    "Полный цикл или промежуточный этап — без разрыва между текстом, макетом и кодом.",
+    "Full-stack витрины, AI-интеграции и кампании с живыми ссылками. Полный цикл или этап — без разрыва между текстом, макетом и кодом.",
   status: "Открыта к проекту",
-  statusNote: "Удалённо · спринт, ретейнер или этап",
+  statusNote: "Удалённо · спринт, ретейнер или роль в команде",
 } as const;
 
 export const contacts = {
@@ -17,20 +17,20 @@ export const contacts = {
 
 export const metrics = [
   { value: "100+", label: "страниц и механик в продакшене" },
-  { value: "22", label: "живых ссылок в кейсах" },
-  { value: "4", label: "зоны: стратегия · контент · код · QA" },
+  { value: "28", label: "живых ссылок в портфолио" },
+  { value: "4", label: "зоны: продукт · дизайн · рост · клиенты" },
 ] as const;
 
 export const stack = [
+  "React · Next.js",
   "Figma",
   "Tilda · Zero Block",
   "HTML / CSS / JS",
+  "Supabase",
   "Cursor",
-  "SEO",
-  "QA",
-  "GitHub",
+  "SEO · QA",
+  "GitHub Pages",
   "Метрика · GA4",
-  "HTML5-баннеры",
 ] as const;
 
 export const capabilityChapters = [
@@ -93,68 +93,155 @@ export type PortfolioItem = {
   links: PortfolioLink[];
 };
 
-export const portfolioItems: PortfolioItem[] = [
-  {
+export type PortfolioGroup = {
+  id: string;
+  label: string;
+  hook: string;
+  accent: string;
+  itemIds: string[];
+};
+
+const portfolioCatalog: Record<string, PortfolioItem> = {
+  knowembed: {
+    id: "knowembed",
+    title: "KnowEmbed · AI SaaS",
+    kind: "showcase",
+    proof:
+      "Full-stack MVP: docs → chatbot → embed-виджет, Stripe, Android APK — end-to-end без «демо на слайдах».",
+    role: "Продукт, UI, Supabase, Edge Functions, RLS, деплой GitHub Pages + Vercel.",
+    previewImage: "/previews/knowembed-mobile.png",
+    visualAccent: "#6e3cff",
+    visualTag: "AI",
+    badges: ["full-stack", "B2B SaaS", "embed"],
+    niches: ["AI", "SaaS"],
+    tech: ["Supabase", "Stripe", "Edge Fn", "APK", "embed"],
+    links: [
+      { label: "Демо", href: "https://elenasamanchuk.github.io/knowembed/" },
+      { label: "Embed", href: "https://elenasamanchuk.github.io/knowembed/embed-demo.html" },
+      { label: "APK", href: "https://elenasamanchuk.github.io/knowembed/downloads/knowembed.apk" },
+      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/knowembed" },
+    ],
+  },
+  "admin-platforms": {
+    id: "admin-platforms",
+    title: "CRM · боты · админки",
+    kind: "showcase",
+    proof:
+      "Связанный контур B2B-панелей: CRM для агентств, конструктор ботов, таск-трекер и виджеты с RBAC.",
+    role: "React/Vite, формы, Telegram/API, PostgreSQL, QA и E2E-автотесты.",
+    previewImage: "/previews/nn99.png",
+    visualAccent: "#b8ff3c",
+    visualTag: "ADMIN",
+    badges: ["CRM", "RBAC", "боты"],
+    niches: ["B2B", "SaaS", "HoReCa"],
+    tech: ["React", "CMS", "боты", "PostgreSQL", "Playwright"],
+    links: [
+      { label: "NN99 · Sender", href: "https://nn99.ru/" },
+      { label: "Platformax", href: "https://platformax.pro/" },
+      { label: "Таск-трекер", href: "https://elenasamanchuk.github.io/task-tracker-mvp/" },
+      { label: "Админка тарифов", href: "https://elenasamanchuk.github.io/popovichfit-tariffs/admin.html" },
+      { label: "E2E тесты", href: "https://github.com/ElenaSamanchuk/platformax-autotests" },
+    ],
+  },
+  "web-apps": {
+    id: "web-apps",
+    title: "PWA · приложения",
+    kind: "showcase",
+    proof: "Офлайн, PWA и APK — от life-style трекера до игровых механик и job-matching.",
+    role: "Cursor, адаптив, GitHub Pages, Android APK, vibe coding в прод.",
+    previewImage: "/previews/vital-coach.png",
+    visualAccent: "#3cc8ff",
+    visualTag: "PWA",
+    badges: ["PWA", "APK", "офлайн"],
+    niches: ["Life style", "игры", "HR"],
+    tech: ["Cursor", "PWA", "APK", "офлайн"],
+    links: [
+      { label: "Поток", href: "https://elenasamanchuk.github.io/vital-coach/onboarding/" },
+      { label: "Republic 2077", href: "https://elenasamanchuk.github.io/republic-2077/" },
+      { label: "Job Radar", href: "https://elenasamanchuk.github.io/job-radar/" },
+    ],
+  },
+  "zero-awakening": {
+    id: "zero-awakening",
+    title: "ZERO // Пробуждение",
+    kind: "showcase",
+    proof:
+      "Интерактивный креатив-лендинг: motion, custom cursor, countdown — Next.js, GPU-friendly анимации.",
+    role: "Next.js 16, Framer Motion, static export, GitHub Pages, perf-tuning.",
+    previewImage: "/previews/yandex-pet-day.png",
+    visualAccent: "#b8ff3c",
+    visualTag: "ZERO",
+    badges: ["интерактив", "motion", "Next.js"],
+    niches: ["креатив", "event"],
+    tech: ["Next.js", "motion", "GH Pages", "perf"],
+    links: [
+      { label: "Демо", href: "https://elenasamanchuk.github.io/zero-awakening/" },
+      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/zero-awakening" },
+    ],
+  },
+  "yandex-pet-day": {
     id: "yandex-pet-day",
     title: "Yandex Pet Day",
     kind: "showcase",
     proof:
-      "Event-лендинг под ключ: Figma 1440+360, UI-kit, Play-прототип и интерактивный код на GitHub Pages.",
+      "Event-лендинг под ключ: Figma 1440+360, UI-kit, Play-прототип и код на GitHub Pages — тестовое Яндекс Крауд.",
     role: "UX/UI, прототип, адаптив 360–1440, HTML/CSS/JS (Vite), QA, handoff.",
     previewImage: "/previews/yandex-pet-day.png",
     visualAccent: "#ffcc00",
     visualTag: "PET DAY",
     badges: ["под ключ", "Figma Play"],
     niches: ["Event", "B2B"],
-    tech: ["Figma", "HTML/CSS/JS", "Vite", "адаптив", "прототип"],
+    tech: ["Figma", "HTML/CSS/JS", "Vite", "адаптив"],
     links: [
       { label: "Figma", href: "https://www.figma.com/design/3xau5j9A2ixWs7YnfHCvXi/Untitled" },
       { label: "Демо", href: "https://elenasamanchuk.github.io/yandex-pet-day/" },
       { label: "Кейс", href: "https://elenasamanchuk.github.io/yandex-pet-day/case.html" },
+      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/yandex-pet-day" },
     ],
   },
-  {
-    id: "knowembed",
-    title: "KnowEmbed · AI chatbot builder",
+  "digital-landing-lab": {
+    id: "digital-landing-lab",
+    title: "Digital Landing Lab",
     kind: "showcase",
-    proof: "Full-stack MVP: docs → chatbot → embed widget, Stripe, Android APK.",
-    role: "Продукт, UI, Supabase, Edge Functions, деплой на GitHub Pages + Vercel.",
-    previewImage: "/previews/knowembed-mobile.png",
-    visualAccent: "#6e3cff",
-    visualTag: "AI",
-    badges: ["full-stack MVP", "B2B SaaS"],
-    niches: ["AI", "SaaS"],
-    tech: ["Supabase", "Stripe", "Android APK", "embed"],
+    proof: "Лендинг из Figma desktop + mobile — чистая вёрстка, сетка, адаптив и деплой без Tilda.",
+    role: "Figma → HTML/CSS, mobile-first, типографика, GitHub Pages.",
+    previewImage: "/previews/yandex-pet-day.png",
+    visualAccent: "#ff6b4a",
+    visualTag: "FIGMA",
+    badges: ["Figma → код", "адаптив"],
+    niches: ["B2B", "лендинг"],
+    tech: ["Figma", "HTML/CSS", "адаптив", "GH Pages"],
     links: [
-      { label: "Демо", href: "https://elenasamanchuk.github.io/knowembed/" },
-      { label: "Embed", href: "https://elenasamanchuk.github.io/knowembed/embed-demo.html" },
+      { label: "Демо", href: "https://elenasamanchuk.github.io/digital-landing-lab/" },
+      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/digital-landing-lab" },
     ],
   },
-  {
+  smartlogic: {
     id: "smartlogic",
     title: "SmartLogic · CRO",
     kind: "case",
     proof:
-      "CRO-редизайн smlogik.ru: premium-бренд сохранён, конверсия в заявку «видеообзор» усилена точечными патчами.",
+      "CRO-редизайн smlogik.ru: premium-бренд сохранён, конверсия в «видеообзор» усилена точечными патчами.",
     role: "Аудит, слой поверх Tilda, inline-каталог, FAQ, AI-консультант, shop UX.",
     previewImage: "/previews/smartlogic.png",
     visualAccent: "#d4af6a",
     visualTag: "CRO",
-    badges: ["CRO", "под ключ"],
+    badges: ["CRO", "конверсия"],
     niches: ["HoReCa", "E-commerce"],
     tech: ["Tilda", "CRO", "KnowEmbed", "HTML/CSS/JS"],
     links: [
       { label: "Демо CRO", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/" },
       { label: "Репорт", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/report/" },
       { label: "smlogik.ru", href: "https://smlogik.ru" },
+      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/conversionart-smlogik-test" },
     ],
   },
-  {
+  growfood: {
     id: "growfood",
-    title: "Growfood",
+    title: "Growfood · механики",
     kind: "case",
-    proof: "Серия промо: вовлечение и следующий шаг в воронке — не декоративные виджеты.",
-    role: "Механики на HTML/CSS/JS + посадочные на Tilda.",
+    proof: "Промо-виджеты с воронкой: калькулятор, колесо, баннеры — не декор, а следующий шаг к заказу.",
+    role: "HTML/CSS/JS механики + посадочные на Tilda, HTML5-баннеры.",
     previewImage: "/previews/growfood.png",
     visualAccent: "#b8ff3c",
     visualTag: "GROW",
@@ -164,14 +251,16 @@ export const portfolioItems: PortfolioItem[] = [
       { label: "ИМТ-калькулятор", href: "https://amb.growfood.pro/food-selection-1" },
       { label: "Колесо фортуны", href: "https://amb.growfood.pro/page79566396.html#reg" },
       { label: "HTML5-баннеры", href: "https://elenasamanchuk.github.io/html5-banners-vitrina/" },
+      { label: "Плейлист", href: "https://gfmusic.tilda.ws/#rec943861591" },
+      { label: "GF Gift", href: "https://gf-gift.ru/#podari" },
     ],
   },
-  {
+  priem: {
     id: "priem",
-    title: "Приём",
+    title: "Приём · кампании",
     kind: "case",
-    proof: "Сезонные кампании и партнёрские лендинги: срочность, сегментация и путь клиента.",
-    role: "Таймер, сезонный квиз и игровые карточки — код HTML/CSS/JS.",
+    proof: "Сезонные кампании и партнёрки: таймер, квиз и игровые карточки — срочность и сегментация.",
+    role: "Таймер (Т-Банк), сезонный квиз, карточки — HTML/CSS/JS на Tilda.",
     previewImage: "/previews/priem.png",
     visualAccent: "#ff3c6e",
     visualTag: "ПРИЁМ",
@@ -180,70 +269,34 @@ export const portfolioItems: PortfolioItem[] = [
     links: [
       { label: "Таймер · Т-Банк", href: "https://priem.menu/?cmz=Kdw5" },
       { label: "Сезонный квиз", href: "https://priem.menu/?cmz=M3rW" },
+      { label: "Игровые карточки", href: "https://amb.priem.menu/page101080486.html" },
     ],
   },
-  {
-    id: "web-apps",
-    title: "Веб-приложения · PWA и APK",
-    kind: "showcase",
-    proof: "PWA, офлайн, vibe coding — от life-style трекера до игровых механик.",
-    role: "Cursor, адаптив, деплой на GitHub Pages, Android APK.",
-    previewImage: "/previews/vital-coach.png",
-    visualAccent: "#3cc8ff",
-    visualTag: "PWA",
-    badges: ["PWA", "APK", "vibe coding"],
-    niches: ["Life style", "игры"],
-    tech: ["Cursor", "PWA", "APK", "офлайн"],
-    links: [
-      { label: "Поток", href: "https://elenasamanchuk.github.io/vital-coach/onboarding/" },
-      { label: "Republic 2077", href: "https://elenasamanchuk.github.io/republic-2077/" },
-      { label: "Job Radar", href: "https://elenasamanchuk.github.io/job-radar/" },
-    ],
-  },
-  {
-    id: "admin-platforms",
-    title: "Админки · CRM · боты",
-    kind: "showcase",
-    proof:
-      "Связанный контур продуктовых панелей: CRM для рестов и агентств, конструктор ботов, таск-трекер и виджеты с админкой.",
-    role: "React/Vite, RBAC, формы, деплой, Telegram/API, QA и автотесты.",
-    previewImage: "/previews/nn99.png",
-    visualAccent: "#b8ff3c",
-    visualTag: "ADMIN",
-    badges: ["CRM", "admin", "боты"],
-    niches: ["B2B", "SaaS", "HoReCa"],
-    tech: ["React", "CMS", "боты", "RBAC", "PostgreSQL"],
-    links: [
-      { label: "NN99 · Sender", href: "https://nn99.ru/" },
-      { label: "Platformax", href: "https://platformax.pro/" },
-      { label: "Таск-трекер", href: "https://elenasamanchuk.github.io/task-tracker-mvp/" },
-      { label: "Админка тарифов", href: "https://elenasamanchuk.github.io/popovichfit-tariffs/admin.html" },
-    ],
-  },
-  {
+  fitness: {
     id: "fitness",
-    title: "Фитнес · эксперт",
+    title: "Фитнес · эксперты",
     kind: "case",
-    proof: "Витрины коучей: доверие и заявка важнее «красивой картинки».",
-    role: "Лендинги и taplink на Tilda — итоги года, модули, страницы под продукты.",
+    proof: "Витрины коучей: taplink, итоги года, модули — доверие и заявка, не «красивая картинка».",
+    role: "Лендинги на Tilda, Zero Block, кастомные блоки и адаптив.",
     previewImage: "/previews/fitness.png",
     visualAccent: "#ff6b4a",
     visualTag: "FIT",
-    badges: ["дизайн адаптива"],
-    niches: ["B2C", "личный бренд"],
+    badges: ["личный бренд"],
+    niches: ["B2C", "эксперт"],
     tech: ["Tilda", "Zero Block", "адаптив"],
     links: [
       { label: "Yourforma", href: "https://yourforma.ru/" },
       { label: "Popovichfit", href: "https://popovichfit.ru/taplink" },
       { label: "Kochfit", href: "https://kochfit.ru/year-results" },
+      { label: "Kinezio", href: "https://kineziofitness.online/module-zero" },
     ],
   },
-  {
+  nasha: {
     id: "nasha",
-    title: "Nasha",
+    title: "Nasha · e-commerce",
     kind: "case",
-    proof: "Запуск e-commerce-витрины: каталог, контент и доводка интерфейса.",
-    role: "Tilda, наполнение каталога, доработки на HTML/CSS/JS.",
+    proof: "Запуск витрины: каталог, контент и доводка UI в одном контуре с Tilda.",
+    role: "Tilda, наполнение каталога, HTML/CSS/JS под макет.",
     previewImage: "/previews/nasha.png",
     visualAccent: "#ff9f43",
     visualTag: "NASHA",
@@ -251,12 +304,12 @@ export const portfolioItems: PortfolioItem[] = [
     tech: ["Tilda", "каталог", "адаптив"],
     links: [{ label: "Каталог", href: "https://nashashop.ru/catalog" }],
   },
-  {
+  education: {
     id: "education",
-    title: "Образование · психология",
+    title: "EdTech · школы",
     kind: "case",
-    proof: "Школы и платформы: длинные лендинги, много контента, спокойный тон.",
-    role: "Tilda, адаптив, QA и автотесты; курсы и HR-витрины.",
+    proof: "Длинные лендинги, курсы и HR-витрины — много контента, спокойный тон, QA и автотесты.",
+    role: "Tilda, адаптив, QA; embed-блоки для школ и курсов.",
     previewImage: "/previews/education.png",
     visualAccent: "#a78bfa",
     visualTag: "ED",
@@ -266,9 +319,51 @@ export const portfolioItems: PortfolioItem[] = [
       { label: "Система Ясности", href: "https://sistemayasnosti.com/" },
       { label: "BI13", href: "https://bi13pro.ru/aestheticbi13" },
       { label: "Mostovoy", href: "https://mostovoyvv.com/" },
+      { label: "Savinar", href: "https://savinarv.tilda.ws/" },
+      { label: "HR-витрина", href: "https://sales-manager-chat.tilda.ws/" },
     ],
   },
+};
+
+/** Порядок и группы — как смотрит работодатель: продукт → craft → рост → клиенты */
+export const portfolioGroups: PortfolioGroup[] = [
+  {
+    id: "product",
+    label: "Продукт · код",
+    hook: "Full-stack, админки и приложения — живые демо",
+    accent: "#6e3cff",
+    itemIds: ["knowembed", "admin-platforms", "web-apps", "zero-awakening"],
+  },
+  {
+    id: "craft",
+    label: "Дизайн → прод",
+    hook: "Figma, CRO и вёрстка до деплоя",
+    accent: "#b8ff3c",
+    itemIds: ["yandex-pet-day", "digital-landing-lab", "smartlogic"],
+  },
+  {
+    id: "growth",
+    label: "Конверсия · кампании",
+    hook: "Механики, которые ведут к действию",
+    accent: "#ff3c6e",
+    itemIds: ["growfood", "priem"],
+  },
+  {
+    id: "clients",
+    label: "Клиенты в проде",
+    hook: "Витрины, которые уже принимают заявки",
+    accent: "#3cc8ff",
+    itemIds: ["fitness", "nasha", "education"],
+  },
 ];
+
+export const portfolioItems: PortfolioItem[] = portfolioGroups.flatMap((group) =>
+  group.itemIds.map((id) => portfolioCatalog[id]),
+);
+
+export function getPortfolioGroupForItem(itemId: string): PortfolioGroup | undefined {
+  return portfolioGroups.find((group) => group.itemIds.includes(itemId));
+}
 
 export const collaborationFormats = [
   {
@@ -303,10 +398,10 @@ export const collaborationFormats = [
 
 export const marqueeItems = [
   "ЕЛЕНА САМАНЧУК",
-  "FULL-STACK LANDING",
-  "TILDA · FIGMA · CODE",
+  "FULL-STACK",
+  "AI · SaaS · CRM",
+  "FIGMA → CODE",
   "100+ В ПРОДЕ",
-  "GITHUB PAGES",
   "OPEN TO WORK",
 ] as const;
 

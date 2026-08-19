@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { portfolioItems } from "@/lib/content";
+import {
+  portfolioGroups,
+  portfolioItems,
+  getPortfolioGroupForItem,
+  type PortfolioItem,
+} from "@/lib/content";
 import { CaseVisual } from "@/components/case-visual";
 
+const DEFAULT_ITEM_ID = portfolioGroups[0]?.itemIds[0] ?? portfolioItems[0]?.id;
+
 export function PortfolioSection() {
-  const [active, setActive] = useState(0);
-  const item = portfolioItems[active];
+  const [activeId, setActiveId] = useState(DEFAULT_ITEM_ID);
+  const item = portfolioItems.find((entry) => entry.id === activeId) ?? portfolioItems[0];
+  const activeGroup = getPortfolioGroupForItem(item.id);
 
   return (
     <section id="cases" className="py-24 sm:py-32 defer-paint">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-12 max-w-3xl lg:mb-16">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-neon">
             Портфолио
           </p>
@@ -20,32 +28,53 @@ export function PortfolioSection() {
             Избранные проекты
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Каждый кейс — с живым URL. Сверху — интерактивные примеры «под ключ».
+            Сгруппировано для работодателя: продукт и код → дизайн в прод → кампании →
+            клиентские витрины. Каждая карточка — с живыми ссылками.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[280px_1fr]">
-          <div className="flex flex-row gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
-            {portfolioItems.map((entry, index) => (
-              <button
-                key={entry.id}
-                type="button"
-                onClick={() => setActive(index)}
-                className={`interactive shrink-0 rounded-2xl border px-4 py-3 text-left transition-all lg:px-5 lg:py-3.5 ${
-                  active === index
-                    ? "border-neon/50 bg-neon/5"
-                    : "border-white/8 bg-surface hover:border-white/15"
-                }`}
-              >
-                <p className="font-mono text-[10px] uppercase tracking-wider text-neon">
-                  {entry.kind === "showcase" ? "демо" : "кейс"}
-                </p>
-                <p className="mt-1.5 font-display text-sm font-semibold leading-snug sm:text-base">
-                  {entry.title}
-                </p>
-              </button>
+        <div className="grid gap-8 lg:grid-cols-[300px_1fr]">
+          <nav
+            className="flex flex-col gap-6 overflow-x-auto pb-2 lg:overflow-visible lg:pb-0"
+            aria-label="Кейсы и демо"
+          >
+            {portfolioGroups.map((group) => (
+              <div key={group.id} className="shrink-0">
+                <div
+                  className="mb-2 border-l-2 pl-3"
+                  style={{ borderColor: group.accent }}
+                >
+                  <p
+                    className="font-mono text-[10px] uppercase tracking-[0.22em]"
+                    style={{ color: group.accent }}
+                  >
+                    {group.label}
+                  </p>
+                  <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">
+                    {group.hook}
+                  </p>
+                </div>
+
+                <div className="flex flex-row gap-2 lg:flex-col">
+                  {group.itemIds.map((id) => {
+                    const entry = portfolioItems.find((p) => p.id === id);
+                    if (!entry) return null;
+                    const isActive = entry.id === activeId;
+
+                    return (
+                      <PortfolioNavButton
+                        key={entry.id}
+                        entry={entry}
+                        isActive={isActive}
+                        groupAccent={group.accent}
+                        onSelect={() => setActiveId(entry.id)}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             ))}
-          </div>
+          </nav>
 
           <div className="relative min-h-[500px] overflow-hidden rounded-3xl border border-white/8 bg-surface-elevated sm:min-h-[560px]">
             <AnimatePresence mode="wait">
@@ -66,6 +95,15 @@ export function PortfolioSection() {
                 />
 
                 <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-16 sm:px-5 sm:pb-5 sm:pt-20">
+                  {activeGroup && (
+                    <p
+                      className="mb-2 font-mono text-[9px] uppercase tracking-[0.2em]"
+                      style={{ color: activeGroup.accent }}
+                    >
+                      {activeGroup.label}
+                    </p>
+                  )}
+
                   <div className="flex flex-wrap gap-1.5">
                     {item.badges?.map((badge) => (
                       <span
@@ -94,7 +132,7 @@ export function PortfolioSection() {
                   </p>
 
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    {item.tech.slice(0, 4).map((tech) => (
+                    {item.tech.slice(0, 5).map((tech) => (
                       <span
                         key={tech}
                         className="rounded-md border border-white/10 bg-black/35 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm"
@@ -126,5 +164,44 @@ export function PortfolioSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function PortfolioNavButton({
+  entry,
+  isActive,
+  groupAccent,
+  onSelect,
+}: {
+  entry: PortfolioItem;
+  isActive: boolean;
+  groupAccent: string;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={`interactive shrink-0 rounded-2xl border px-4 py-3 text-left transition-all lg:w-full lg:px-4 lg:py-3 ${
+        isActive
+          ? "border-neon/50 bg-neon/5 shadow-[0_0_24px_rgba(184,255,60,0.08)]"
+          : "border-white/8 bg-surface hover:border-white/15"
+      }`}
+      style={
+        isActive
+          ? { borderColor: `${groupAccent}55`, boxShadow: `0 0 28px ${groupAccent}12` }
+          : undefined
+      }
+    >
+      <p
+        className="font-mono text-[10px] uppercase tracking-wider"
+        style={{ color: isActive ? groupAccent : undefined }}
+      >
+        {entry.kind === "showcase" ? "демо" : "кейс"}
+      </p>
+      <p className="mt-1.5 font-display text-sm font-semibold leading-snug sm:text-[15px]">
+        {entry.title}
+      </p>
+    </button>
   );
 }
