@@ -47,7 +47,7 @@ export function PortfolioSection() {
             ))}
           </div>
 
-          <div className="relative min-h-[460px] overflow-hidden rounded-3xl border border-white/8 bg-surface-elevated sm:min-h-[520px]">
+          <div className="relative min-h-[500px] overflow-hidden rounded-3xl border border-white/8 bg-surface-elevated sm:min-h-[560px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={item.id}
@@ -60,13 +60,12 @@ export function PortfolioSection() {
                 <CaseVisual
                   id={item.id}
                   title={item.title}
-                  previewImage={item.previewImage}
                   accent={item.visualAccent}
                   visualTag={item.visualTag}
                   niches={item.niches}
                 />
 
-                <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-20 sm:px-5 sm:pb-5 sm:pt-24">
+                <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-16 sm:px-5 sm:pb-5 sm:pt-20">
                   <div className="flex flex-wrap gap-1.5">
                     {item.badges?.map((badge) => (
                       <span
