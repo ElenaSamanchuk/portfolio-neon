@@ -17,7 +17,7 @@ export const contacts = {
 
 export const metrics = [
   { value: "100+", label: "страниц и механик в продакшене" },
-  { value: "28", label: "живых ссылок в портфолио" },
+  { value: "26", label: "живых ссылок в портфолио" },
   { value: "4", label: "зоны: клиенты · механики · дизайн · код" },
 ] as const;
 
@@ -139,8 +139,6 @@ const portfolioCatalog: Record<string, PortfolioItem> = {
       { label: "NN99 · Sender", href: "https://nn99.ru/" },
       { label: "Platformax", href: "https://platformax.pro/" },
       { label: "Таск-трекер", href: "https://elenasamanchuk.github.io/task-tracker-mvp/" },
-      { label: "Админка тарифов", href: "https://elenasamanchuk.github.io/popovichfit-tariffs/admin.html" },
-      { label: "E2E тесты", href: "https://github.com/ElenaSamanchuk/platformax-autotests" },
     ],
   },
   "web-apps": {
@@ -230,10 +228,9 @@ const portfolioCatalog: Record<string, PortfolioItem> = {
     niches: ["HoReCa", "E-commerce"],
     tech: ["Tilda", "CRO", "KnowEmbed", "HTML/CSS/JS"],
     links: [
-      { label: "Демо CRO", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/" },
-      { label: "Репорт", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/report/" },
+      { label: "Лендинг", href: "https://elenasamanchuk.github.io/smartlogic-landing/" },
+      { label: "Кейс", href: "https://elenasamanchuk.github.io/smartlogic-landing/case/" },
       { label: "smlogik.ru", href: "https://smlogik.ru" },
-      { label: "GitHub", href: "https://github.com/ElenaSamanchuk/conversionart-smlogik-test" },
     ],
   },
   growfood: {
