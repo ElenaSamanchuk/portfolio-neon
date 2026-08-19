@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import {
   BUILDER_BLOCKS,
+  BUILDER_GAP,
   BUILDER_STAGE_MIN_HEIGHT,
   BUILDER_TUNING,
 } from "@/data/block-builder";
@@ -103,56 +104,59 @@ export function PageBuilder() {
   return (
     <div
       ref={rootRef}
-      className="page-builder mx-auto w-full max-w-[400px] transform-gpu"
+      className="page-builder mx-auto w-full max-w-[800px] transform-gpu"
       data-polish={polished ? "true" : "false"}
       aria-hidden="true"
     >
       <div
         ref={stageRef}
-        className="page-builder__stage relative grid gap-[5px]"
-        style={{ minHeight: BUILDER_STAGE_MIN_HEIGHT }}
+        className="page-builder__stage relative grid"
+        style={{
+          minHeight: BUILDER_STAGE_MIN_HEIGHT,
+          gap: BUILDER_GAP,
+        }}
       >
         <motion.span
-          className="page-builder__ghost pointer-events-none absolute top-0 left-0 z-[6] h-2.5 w-2.5 rounded-sm bg-neon shadow-[0_0_14px_rgba(184,255,60,0.55)]"
+          className="page-builder__ghost pointer-events-none absolute top-0 left-0 z-[6] h-4 w-4 rounded-sm bg-neon shadow-[0_0_18px_rgba(184,255,60,0.55)]"
           style={{ x: ghostX, y: ghostY, opacity: ghostVisible ? 0.85 : 0 }}
         />
 
         <BuilderBlock id="nav" phase={phases.nav} polished={polished}>
-          <div className="flex h-full items-center gap-1.5 px-2">
-            <i className="block h-1.5 flex-1 rounded-full bg-white/12" />
-            <i className="block h-1.5 w-[18%] rounded-full bg-white/12" />
-            <i className="block h-1.5 w-[12%] rounded-full bg-white/12" />
+          <div className="flex h-full items-center gap-2 px-3">
+            <i className="block h-2.5 flex-1 rounded-full bg-white/12" />
+            <i className="block h-2.5 w-[18%] rounded-full bg-white/12" />
+            <i className="block h-2.5 w-[12%] rounded-full bg-white/12" />
           </div>
         </BuilderBlock>
 
         <BuilderBlock id="hero" phase={phases.hero} polished={polished}>
-          <div className="grid gap-1.5 p-2.5">
-            <span className="block h-3.5 w-[72%] rounded-full bg-white/10" />
-            <div className="grid grid-cols-[1fr_0.85fr] gap-1.5">
-              <span className="block h-2 rounded-full bg-white/7" />
-              <span className="block h-2 w-[88%] rounded-full bg-white/7" />
+          <div className="grid gap-2.5 p-4">
+            <span className="block h-5 w-[72%] rounded-full bg-white/10" />
+            <div className="grid grid-cols-[1fr_0.85fr] gap-2">
+              <span className="block h-3 rounded-full bg-white/7" />
+              <span className="block h-3 w-[88%] rounded-full bg-white/7" />
             </div>
-            <span className="block h-3 w-[38%] rounded-full bg-white/8" />
+            <span className="block h-4 w-[38%] rounded-full bg-white/8" />
           </div>
         </BuilderBlock>
 
         <BuilderBlock id="columns" phase={phases.columns} polished={polished}>
-          <div className="grid h-full grid-cols-3 gap-1 p-1.5">
+          <div className="grid h-full grid-cols-3 gap-2 p-2.5">
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className={`grid gap-1 rounded-md bg-white/5 p-1.5 ${i === 1 ? "pb-columns__item--tall" : ""}`}
+                className={`grid gap-2 rounded-md bg-white/5 p-2.5 ${i === 1 ? "pb-columns__item--tall" : ""}`}
               >
-                <b className="block h-2 w-[70%] rounded-full bg-white/10" />
-                <i className="block h-1.5 rounded-full bg-white/7" />
-                {i === 1 && <i className="block h-1.5 w-[82%] rounded-full bg-white/7" />}
+                <b className="block h-3 w-[70%] rounded-full bg-white/10" />
+                <i className="block h-2 rounded-full bg-white/7" />
+                {i === 1 && <i className="block h-2 w-[82%] rounded-full bg-white/7" />}
               </div>
             ))}
           </div>
         </BuilderBlock>
 
         <BuilderBlock id="cards" phase={phases.cards} polished={polished}>
-          <div className="flex h-full items-end gap-1.5 p-2">
+          <div className="flex h-full items-end gap-2 p-3">
             <i className="block h-full w-1/3 rounded-md bg-white/8" />
             <i className="block h-[88%] w-1/3 rounded-md bg-white/8" />
             <i className="block h-[76%] w-1/3 rounded-md bg-white/8" />

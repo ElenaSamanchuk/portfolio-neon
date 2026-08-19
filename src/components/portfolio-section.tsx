@@ -48,7 +48,7 @@ export function PortfolioSection() {
             ))}
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl border border-white/8 bg-surface-elevated">
+          <div className="relative min-h-[460px] overflow-hidden rounded-3xl border border-white/8 bg-surface-elevated sm:min-h-[520px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={item.id}
@@ -56,27 +56,28 @@ export function PortfolioSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="grid lg:grid-cols-[1.15fr_0.85fr] lg:grid-rows-1"
+                className="absolute inset-0"
               >
-                <div className="relative aspect-[16/11] min-h-[220px] sm:min-h-[280px] lg:aspect-auto lg:min-h-[360px]">
-                  <Image
-                    src={assetPath(item.previewImage)}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 45vw"
-                    priority={active === 0}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-surface-elevated/80 lg:block" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-elevated/40 via-transparent to-transparent lg:hidden" />
-                </div>
+                <Image
+                  src={assetPath(item.previewImage)}
+                  alt={item.title}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 65vw"
+                  priority={active === 0}
+                />
 
-                <div className="flex flex-col gap-3 p-5 sm:p-6 lg:py-6 lg:pr-6">
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/72 to-transparent"
+                  aria-hidden
+                />
+
+                <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-20 sm:px-5 sm:pb-5 sm:pt-24">
                   <div className="flex flex-wrap gap-1.5">
                     {item.badges?.map((badge) => (
                       <span
                         key={badge}
-                        className="rounded-full border border-neon/30 bg-neon/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-neon"
+                        className="rounded-full border border-neon/30 bg-black/40 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-neon backdrop-blur-sm"
                       >
                         {badge}
                       </span>
@@ -84,44 +85,40 @@ export function PortfolioSection() {
                     {item.niches.slice(0, 2).map((niche) => (
                       <span
                         key={niche}
-                        className="rounded-full border border-white/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground"
+                        className="rounded-full border border-white/10 bg-black/30 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm"
                       >
                         {niche}
                       </span>
                     ))}
                   </div>
 
-                  <h3 className="font-display text-xl font-bold leading-tight sm:text-2xl">
+                  <h3 className="mt-2 font-display text-xl font-bold leading-tight sm:text-2xl">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                  <p className="mt-1.5 text-sm leading-snug text-muted-foreground line-clamp-2">
                     {item.proof}
                   </p>
 
-                  <p className="text-xs leading-relaxed text-muted-foreground/75 line-clamp-2">
-                    {item.role}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {item.tech.slice(0, 5).map((tech) => (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {item.tech.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md border border-white/8 bg-black/30 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-muted-foreground"
+                        className="rounded-md border border-white/10 bg-black/35 px-2 py-0.5 font-mono text-[8px] uppercase tracking-wider text-muted-foreground backdrop-blur-sm"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {item.links.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="interactive rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium transition-colors hover:border-neon/40 hover:bg-neon/5 hover:text-neon"
+                        className="interactive rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs font-medium backdrop-blur-sm transition-colors hover:border-neon/40 hover:bg-neon/10 hover:text-neon"
                       >
                         {link.label} ↗
                       </a>
@@ -130,6 +127,7 @@ export function PortfolioSection() {
                 </div>
               </motion.div>
             </AnimatePresence>
+
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-neon/5 via-transparent to-accent-hot/5" />
           </div>
         </div>
