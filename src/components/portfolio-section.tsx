@@ -94,7 +94,7 @@ export function PortfolioSection() {
                   niches={item.niches}
                 />
 
-                <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 pt-16 sm:px-5 sm:pb-5 sm:pt-20">
+                <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-5 pt-16 sm:px-5 sm:pb-6 sm:pt-20">
                   {activeGroup && (
                     <p
                       className="mb-2 font-mono text-[9px] uppercase tracking-[0.2em]"
@@ -142,14 +142,14 @@ export function PortfolioSection() {
                     ))}
                   </div>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="mt-4 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
                     {item.links.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="interactive rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs font-medium backdrop-blur-sm transition-colors hover:border-neon/40 hover:bg-neon/10 hover:text-neon"
+                        className="interactive inline-flex min-h-11 w-full items-center justify-center rounded-full border border-white/20 bg-black/55 px-3 py-2.5 text-sm font-semibold leading-tight backdrop-blur-sm transition-[color,background,border-color,transform] hover:border-neon/50 hover:bg-neon/15 hover:text-neon active:scale-[0.98] sm:w-auto sm:justify-start sm:px-5 sm:py-3 sm:text-[15px]"
                       >
                         {link.label} ↗
                       </a>
