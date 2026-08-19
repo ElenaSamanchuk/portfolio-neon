@@ -18,7 +18,7 @@ export const contacts = {
 export const metrics = [
   { value: "100+", label: "страниц и механик в продакшене" },
   { value: "28", label: "живых ссылок в портфолио" },
-  { value: "4", label: "зоны: продукт · дизайн · рост · клиенты" },
+  { value: "4", label: "зоны: клиенты · механики · дизайн · код" },
 ] as const;
 
 export const stack = [
@@ -325,21 +325,14 @@ const portfolioCatalog: Record<string, PortfolioItem> = {
   },
 };
 
-/** Порядок и группы — как смотрит работодатель: продукт → craft → рост → клиенты */
+/** Порядок: клиенты → механики → дизайн → full-stack */
 export const portfolioGroups: PortfolioGroup[] = [
   {
-    id: "product",
-    label: "Продукт · код",
-    hook: "Full-stack, админки и приложения — живые демо",
-    accent: "#6e3cff",
-    itemIds: ["knowembed", "admin-platforms", "web-apps", "zero-awakening"],
-  },
-  {
-    id: "craft",
-    label: "Дизайн → прод",
-    hook: "Figma, CRO и вёрстка до деплоя",
-    accent: "#b8ff3c",
-    itemIds: ["yandex-pet-day", "digital-landing-lab", "smartlogic"],
+    id: "clients",
+    label: "Клиенты в проде",
+    hook: "Витрины, которые уже принимают заявки",
+    accent: "#3cc8ff",
+    itemIds: ["fitness", "nasha", "education"],
   },
   {
     id: "growth",
@@ -349,11 +342,18 @@ export const portfolioGroups: PortfolioGroup[] = [
     itemIds: ["growfood", "priem"],
   },
   {
-    id: "clients",
-    label: "Клиенты в проде",
-    hook: "Витрины, которые уже принимают заявки",
-    accent: "#3cc8ff",
-    itemIds: ["fitness", "nasha", "education"],
+    id: "craft",
+    label: "Дизайн → прод",
+    hook: "Figma, CRO и вёрстка до деплоя",
+    accent: "#b8ff3c",
+    itemIds: ["yandex-pet-day", "digital-landing-lab", "smartlogic"],
+  },
+  {
+    id: "product",
+    label: "Продукт · код",
+    hook: "Full-stack, админки и приложения — живые демо",
+    accent: "#6e3cff",
+    itemIds: ["knowembed", "admin-platforms", "web-apps", "zero-awakening"],
   },
 ];
 
