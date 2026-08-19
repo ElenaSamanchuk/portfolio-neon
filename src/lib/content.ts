@@ -17,7 +17,7 @@ export const contacts = {
 
 export const metrics = [
   { value: "100+", label: "страниц и механик в продакшене" },
-  { value: "19", label: "живых ссылок в кейсах" },
+  { value: "22", label: "живых ссылок в кейсах" },
   { value: "4", label: "зоны: стратегия · контент · код · QA" },
 ] as const;
 
@@ -125,6 +125,23 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
+    id: "smartlogic",
+    title: "SmartLogic · CRO",
+    kind: "case",
+    proof:
+      "CRO-редизайн smlogik.ru: premium-бренд сохранён, конверсия в заявку «видеообзор» усилена точечными патчами.",
+    role: "Аудит, слой поверх Tilda, inline-каталог, FAQ, AI-консультант, shop UX.",
+    previewImage: "/previews/smartlogic.png",
+    badges: ["CRO", "под ключ"],
+    niches: ["HoReCa", "E-commerce"],
+    tech: ["Tilda", "CRO", "KnowEmbed", "HTML/CSS/JS"],
+    links: [
+      { label: "Демо CRO", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/" },
+      { label: "Репорт", href: "https://elenasamanchuk.github.io/conversionart-smlogik-test/report/" },
+      { label: "smlogik.ru", href: "https://smlogik.ru" },
+    ],
+  },
+  {
     id: "growfood",
     title: "Growfood",
     kind: "case",
@@ -170,17 +187,21 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
-    id: "platform-stack",
-    title: "Продуктовые проекты",
-    kind: "case",
-    proof: "Перенос редизайна из Figma в код при помощи Cursor.",
-    role: "Миграция с Tilda, Figma в код, эффекты, деплой, QA.",
+    id: "admin-platforms",
+    title: "Админки · CRM · боты",
+    kind: "showcase",
+    proof:
+      "Связанный контур продуктовых панелей: CRM для рестов и агентств, конструктор ботов, таск-трекер и виджеты с админкой.",
+    role: "React/Vite, RBAC, формы, деплой, Telegram/API, QA и автотесты.",
     previewImage: "/previews/nn99.png",
-    niches: ["EdTech", "B2B", "SaaS"],
-    tech: ["Figma", "Cursor", "React", "деплой"],
+    badges: ["CRM", "admin", "боты"],
+    niches: ["B2B", "SaaS", "HoReCa"],
+    tech: ["React", "CMS", "боты", "RBAC", "PostgreSQL"],
     links: [
-      { label: "Sender AI", href: "https://nn99.ru/" },
+      { label: "NN99 · Sender", href: "https://nn99.ru/" },
       { label: "Platformax", href: "https://platformax.pro/" },
+      { label: "Таск-трекер", href: "https://elenasamanchuk.github.io/task-tracker-mvp/" },
+      { label: "Админка тарифов", href: "https://elenasamanchuk.github.io/popovichfit-tariffs/admin.html" },
     ],
   },
   {
